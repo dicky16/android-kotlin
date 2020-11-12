@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">tugas4</string>
+    <string name="reset">RESET</string>
+    <string name="_0">0</string>
+    <string name="down">Down</string>
+    <string name="up">UP</string>
+</resources>
