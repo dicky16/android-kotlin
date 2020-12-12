@@ -11,7 +11,6 @@ import com.loopj.android.http.AsyncHttpResponseHandler
 import com.slim.makanan.model.FoodModel
 import cz.msebera.android.httpclient.Header
 import kotlinx.android.synthetic.main.activity_main.*
-import org.json.JSONArray
 import org.json.JSONObject
 
 

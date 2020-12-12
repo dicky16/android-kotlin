@@ -1,8 +1,10 @@
 package com.slim.makanan
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -30,6 +32,9 @@ class FoodAdapter(private val listFood: ArrayList<FoodModel>) : RecyclerView.Ada
                     .apply(RequestOptions().override(100, 100))
                     .into(img_item_photo)
                 tv_nama.text = foodModel.nama
+                itemView.setOnClickListener {
+                    Log.e("tag", "kepenek = ${foodModel.nama}")
+                    Toast.makeText(itemView.context, "Kamu memilih ${foodModel.nama}", Toast.LENGTH_SHORT).show() }
             }
         }
     }
