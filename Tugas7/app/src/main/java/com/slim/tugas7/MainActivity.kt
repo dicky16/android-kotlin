@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 
@@ -31,13 +32,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun button_read(view: View) {
+        var h = ""
         GlobalScope.async {
             var id: String = editText_id.text.toString()
 
-            var alamat = "http://192.168.43.214/android/getID.php?id=$id"
+            var alamat = "http://192.168.100.76/android/getID.php?id=$id"
             var hasil: String = getJsonFromURL(alamat).toString()
+            h = hasil
             textView_hasil.setText(hasil)
         }
+        Toast.makeText(this@MainActivity, "Email atau Password Anda salah!", Toast.LENGTH_SHORT).show()
+
     }
 
     fun button_insert(view: View) {
@@ -47,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         alamat = alamat.replace(" ", "%20")
 
         GlobalScope.launch {
-            URL("http://192.168.43.214/android/insert.php?nama="+nama+"&alamat="+alamat).openStream()
+            URL("http://192.168.100.76/android/insert.php?nama="+nama+"&alamat="+alamat).openStream()
         }
 
     }
@@ -61,12 +66,12 @@ class MainActivity : AppCompatActivity() {
         alamat = alamat.replace(" ", "%20")
 
         GlobalScope.launch {
-            URL("http://192.168.43.214/android/update.php?nama="+nama+"&alamat="+alamat+"&id="+id).openStream()
+            URL("http://192.168.100.76/android/update.php?nama="+nama+"&alamat="+alamat+"&id="+id).openStream()
         }
         GlobalScope.async {
             var id: String = editText_id.text.toString()
 
-            var alamat = "http://192.168.43.214/android/getID.php?id=$id"
+            var alamat = "http://192.168.100.76/android/getID.php?id=$id"
             var hasil: String = getJsonFromURL(alamat).toString()
             textView_hasil.setText(hasil)
         }
@@ -74,7 +79,7 @@ class MainActivity : AppCompatActivity() {
     fun button_delete(view: View) {
         var id:String = editText_id.text.toString()
         GlobalScope.launch {
-            URL("http://192.168.43.214/android/delete.php?id=$id").openStream()
+            URL("http://192.168.100.76/android/delete.php?id=$id").openStream()
         }
     }
 
